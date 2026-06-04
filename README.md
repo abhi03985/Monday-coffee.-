@@ -1,5 +1,5 @@
 # Monday Coffee Expansion SQL Project
-![Monday Coffee](https://github.com/abhi03985/Monday-coffee-/blob/main/1_Monday_Coffee.png?raw=true)
+1.Monday Coffee.png
 ## 📋 Project Overview
 
 This project analyzes sales data from Monday Coffee, an online coffee retailer operating since January 2023. The analysis aims to identify and recommend the top three major cities in India for opening new coffee shop locations based on consumer demand and sales performance metrics.
