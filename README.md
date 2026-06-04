@@ -1,70 +1,51 @@
-# Monday Coffee Expansion SQL Project
-**[View Project Visual Here](./1.Monday%20Coffee.png)**
+# ☕ Monday Coffee Expansion Strategy Analysis | SQL Project
 
-## 📋 Project Overview
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-Data%20Analysis-orange?style=for-the-badge)
+![Analytics](https://img.shields.io/badge/Business-Intelligence-brightgreen?style=for-the-badge)
 
-This project analyzes sales data from Monday Coffee, an online coffee retailer operating since January 2023. The analysis aims to identify and recommend the top three major cities in India for opening new coffee shop locations based on consumer demand and sales performance metrics.
+## 📌 Project Overview
+**Monday Coffee**, a fast-growing coffee chain, aimed to expand into new cities across India 🇮🇳. However, making expansion decisions based on intuition alone could lead to sky-high operational costs 💸 and poor market penetration. 
 
----
-
-## 🎯 Key Analysis Questions
-
-1. **Coffee Consumer Estimation**  
-   How many people in each city are estimated to consume coffee (assuming 25% of the population)?
-
-2. **Q4 2023 Revenue Analysis**  
-   What is the total revenue generated from coffee sales across all cities in Q4 2023?
-
-3. **Product Sales Volume**  
-   How many units of each coffee product have been sold?
-
-4. **Average Sales Performance by City**  
-   What is the average sales amount per customer in each city?
-
-5. **City Demographics & Coffee Market**  
-   Provide a comprehensive list of cities with their populations and estimated coffee consumers.
-
-6. **Top-Performing Products by Location**  
-   What are the top 3 best-selling products in each city by sales volume?
-
-7. **Customer Base Analysis**  
-   How many unique customers have purchased coffee products in each city?
-
-8. **Profitability Assessment**  
-   Compare average sale per customer against average rent per customer for each city.
-
-9. **Growth Metrics**  
-   Calculate monthly sales growth rates and identify percentage changes in sales performance over different time periods.
-
-10. **Market Potential Scoring**  
-    Identify the top 3 cities based on comprehensive metrics: total sales, total rent, customer count, and estimated coffee consumers.
+This project delivers a data-driven solution by leveraging advanced **SQL analytics** to evaluate business performance across multiple cities, transforming raw transactional data into actionable insights for strategic expansion.
 
 ---
 
-## 🏆 Strategic Recommendations
-
-Based on the comprehensive data analysis, the following three cities are recommended for new store openings:
-
-### **1. Pune** 🥇
-- **Key Advantage:** Highest total revenue generation
-- **Operational Efficiency:** Lowest average rent per customer
-- **Customer Value:** Strong average sales per customer
-- **Bottom Line:** Excellent profitability and revenue potential
-
-### **2. Delhi** 🥈
-- **Market Scale:** Highest estimated coffee consumers (~7.7 million)
-- **Customer Base:** Largest customer pool with 68 unique customers
-- **Cost-Effective:** Average rent per customer at ₹330 (well below ₹500 threshold)
-- **Bottom Line:** Massive market opportunity with manageable operational costs
-
-### **3. Jaipur** 🥉
-- **Strong Customer Base:** Highest number of customers at 69
-- **Cost Advantage:** Lowest average rent per customer at ₹156
-- **Customer Lifetime Value:** Competitive average sales per customer at ₹11,600
-- **Bottom Line:** Budget-friendly expansion with solid revenue generation
+## ❓ Problem Statement
+The core challenge was to identify cities with the strongest combination of **customer demand 📈, revenue potential 💰, and operational profitability** to maximize ROI and reduce expansion risks.
 
 ---
 
-## 📊 Project Insights
+## 🛠️ Key Analyses Conducted
 
-This analysis combines multiple data dimensions—consumer demographics, financial performance, operational costs, and market potential—to provide a data-driven strategy for Monday Coffee's retail expansion in India.
+* **💰 Revenue Contribution:** Assessed city-wise sales performance and overall revenue share.
+* **👥 Market Potential:** Estimated market size using customer acquisition metrics and purchasing behavior.
+* **☕ Engagement Trends:** Analyzed average revenue per customer and order frequencies.
+* **📉 Profitability Margins:** Compared operational costs against revenue generation to protect the bottom line.
+* **🏆 High-Growth Ranking:** Identified breakout cities through trend and window-function ranking analysis.
+
+---
+
+## 💡 Code Showcase: High-Value Customer Ranking
+
+To rank cities by long-term customer value rather than just total volume, the following query uses **CTEs** and **Window Functions** to isolate customers in the top spending tier (75th percentile) and rank the cities based on their high-value customer density:
+
+```sql
+WITH CustomerSpending AS (
+    SELECT 
+        c.city_id,
+        c.customer_id,
+        SUM(o.total_amount) AS total_spent,
+        NTILE(4) OVER (ORDER BY SUM(o.total_amount) DESC) AS spending_tier
+    FROM customers c
+    JOIN orders o ON c.customer_id = o.customer_id
+    GROUP BY c.city_id, c.customer_id
+)
+SELECT 
+    ci.city_name,
+    COUNT(cs.customer_id) AS high_value_customer_count,
+    RANK() OVER (ORDER BY COUNT(cs.customer_id) DESC) AS city_rank
+FROM CustomerSpending cs
+JOIN cities ci ON cs.city_id = ci.city_id
+WHERE cs.spending_tier = 1
+GROUP BY ci.city_name;
