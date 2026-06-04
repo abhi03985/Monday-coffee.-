@@ -1,5 +1,5 @@
 # Monday Coffee Expansion SQL Project
-![Monday Coffee - Growth Analytics and Strategy](./1_Monday_Coffee.png)
+![Monday Coffee - Growth Analytics and Strategy](./1._Monday_Coffee.png)
 
 ## 📋 Project Overview
 
