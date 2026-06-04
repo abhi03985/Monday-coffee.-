@@ -57,7 +57,9 @@ GROUP BY ci.city_name;
 
 🗺️ Decision Framework: Provided a structured, scalable framework for future location-based business planning.
 
-📂 Repository Structure
+## 📁 Repository Structure
+
+```text
 ├── 📷 1.Monday Coffee.png
 ├── 📷 2.Objective.png
 ├── 📷 3.Easy and Medium Question.png
