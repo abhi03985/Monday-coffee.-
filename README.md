@@ -1,5 +1,5 @@
 # Monday Coffee Expansion SQL Project
-![Monday Coffee - Growth Analytics and Strategy](https://github.com/abhi03985/Monday-coffee-/blob/33a3bb6c53ac15befc422211b33b9a4690340969/1.Monday%20Coffee.png?raw=true)
+![Monday Coffee - Growth Analytics and Strategy](https://raw.githubusercontent.com/abhi03985/Monday-coffee-/main/1.Monday%20Coffee.png)
 
 ## 📋 Project Overview
 
