@@ -58,13 +58,20 @@ GROUP BY ci.city_name;
 🗺️ Decision Framework: Provided a structured, scalable framework for future location-based business planning.
 
 📂 Repository Structure
-├── Data/
-│   ├── monday_coffee_orders.csv
-│   └── city_metrics.csv
-├── Scripts/
-│   ├── 01_sales_analysis.sql
-│   ├── 02_customer_segmentation.sql
-│   └── 03_profitability_ranking.sql
-└── README.md
+## 📁 Repository Structure
+
+```text
+├── 📷 1.Monday Coffee.png
+├── 📷 2.Objective.png
+├── 📷 3.Easy and Medium Question.png
+├── 📷 4.Medium Questions.png
+├── 📷 5.Advanced Question & Analysis.png
+├── 📷 6.Recommendation & Reason.jpg
+├── 📄 README.md
+├── 📊 city.csv
+├── 📊 customers.csv
+├── 📊 products.csv
+├── 📊 sales.csv
+└── 💾 mysolution.sql
 🧠 Skills Demonstrated
 MySQL • CTEs • Window Functions • Data Joins & Aggregations • Business Intelligence • Data Storytelling 🎨
