@@ -49,3 +49,20 @@ FROM CustomerSpending cs
 JOIN cities ci ON cs.city_id = ci.city_id
 WHERE cs.spending_tier = 1
 GROUP BY ci.city_name;
+
+🚀 Business Impact & Recommendations
+🎯 Precision Expansion: Identified the top 3 target cities showing the highest average order value (AOV) and lowest customer acquisition costs (CAC).
+
+🛡️ Risk Mitigation: Highlighted underperforming regions where high operational costs outweigh transaction volume, saving potential capital waste.
+
+🗺️ Decision Framework: Provided a structured, scalable framework for future location-based business planning.
+
+📂 Repository Structure
+Plaintext
+├── Data/                 # Dataset files (CSVs/SQL dumps)
+├── Scripts/              # SQL script files containing queries
+│   ├── 01_sales_analysis.sql
+│   └── 02_customer_segmentation.sql
+└── README.md             # Project documentation
+🧠 Skills Demonstrated
+MySQL • CTEs • Window Functions • Data Joins & Aggregations • Business Intelligence • Data Storytelling 🎨
